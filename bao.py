@@ -105,5 +105,6 @@ async def on_message(message):
 
         await message.channel.send(str(rating) + "/10 - " + comment)
 
-
-client.run('NzAyODAxODMyNDE3ODIwNzc0.XqFcNQ.86FloEyaOdkF9qUlMtV9_83jjLY')
+f = open("token.txt", "r")
+token = f.read()
+client.run(token)
