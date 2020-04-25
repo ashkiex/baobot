@@ -3,6 +3,8 @@ bao will respond to certain words [COMPLETED - 24/4/2020]
 when someone pings another person, bao will ping again [COMPLETED - 24/4/2020]
 ratings and emoji reaction to any image sent [COMPLETED - 24/4/2020]
 time based responses
+command to let bao join the vc, squeak and leave
+paw tokens as currency
 
 affectionate point system with commands
 	- affectionate level/points (individual)

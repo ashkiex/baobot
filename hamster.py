@@ -96,15 +96,14 @@ and that's about it! i don't bite (usually) so play with me!
             print("TEA")
             # line = "someone said a meme @" + str(message.guild)
             # log(line)
-
-        if "come" in message.content.lower() or "here" in message.content.lower():
+        elif "come" in message.content.lower() or "here" in message.content.lower():
             num = random.randint(1, 3)
             if num == 1:
                 await message.channel.send(file=discord.File("media/hand2.jpg"))
             elif num == 2:
                 await message.channel.send(file=discord.File("media/hand3.jpg"))
             elif num == 3:
-                await message.channel.send(file=discord.File("media/hand3.png"))
+                await message.channel.send(file=discord.File("media/hand.png"))
             print("hand")
             # line = "i went into someones hand @" + str(message.guild)
             # log(line)
@@ -166,5 +165,5 @@ and that's about it! i don't bite (usually) so play with me!
             # log(line)
 
         for i in message.guild.members:
-            if i.mentioned_in(message):
+            if i.mentioned_in(message) and not message.mention_everyone:
                 await message.channel.send(f"{i.mention} *squeak*  please bring me some food")
