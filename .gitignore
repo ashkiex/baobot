@@ -128,4 +128,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /token.txt
-/features.txt

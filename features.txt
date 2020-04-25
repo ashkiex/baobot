@@ -1,0 +1,15 @@
+clean up/fine tune code
+bao will respond to certain words [COMPLETED - 24/4/2020]
+when someone pings another person, bao will ping again [COMPLETED - 24/4/2020]
+ratings and emoji reaction to any image sent [COMPLETED - 24/4/2020]
+time based responses
+
+affectionate point system with commands
+	- affectionate level/points (individual)
+	    - level 1: stare, feed, give water
+	    - level 2: ~, give treat, hold (chance to annoy)
+	    - level 3: ~, hold (no chance of annoying), free roam
+	- hunger, energy, happiness, annoyance/hostility (bao)
+	    - separate python files
+	- prefix = b!
+	- chance game to bet on with AP (limit to how many times they can play a day)
