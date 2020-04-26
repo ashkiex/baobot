@@ -3,10 +3,15 @@ from datetime import datetime
 # from logger import Logger
 import logging
 from hamster import Hamster
+from messageResponse import MessageResponse
 
+#client setup
 client = discord.Client()
 # logger = Logger()
-hamster = Hamster(10, 10, 10)
+
+#spawning hamster
+msgr = MessageResponse()
+hamster = Hamster(10, 10, 10, msgr)
 
 today = "logs/" + datetime.today().strftime('%d-%m-%Y') + ".txt"
 
@@ -63,7 +68,7 @@ async def on_message(message):
     if message.author == client.user:  # does not reply to bots, including itself
         return
     else:
-        await hamster.msgResponse(message)
+        await hamster.msgr.getHamsterResponse(message)
 
 
 f = open("token.txt", "r")
