@@ -21,6 +21,9 @@ class MessageResponse:
     async def getHamsterResponse(self, message):
         # print(message.content.lower())
         # print(self.__foodResponse)
+        await self.baoPhotoResponse(message)
+        await self.baoMentionResponse(message)
+
         for i in self.__foodResponse:
             if i in message.content.lower():
                 # print("Test")
@@ -88,6 +91,8 @@ class MessageResponse:
                 # print("Test")
                 await self.baoNomResponse(message)
                 return
+
+
 
     async def foodResponse(self, message):
         # foodResponse = ["food", "fud", "seed", "mealworm", "nut", "sunflower"]

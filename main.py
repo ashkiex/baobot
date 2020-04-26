@@ -6,9 +6,8 @@ from hamster import Hamster
 from messageResponse import MessageResponse
 from discord.ext import commands
 
-client = discord.Client()
+
 # logger = Logger()
-hamster = Hamster(10, 10, 10)
 bot = commands.Bot(command_prefix='b!')
 
 #spawning hamster
