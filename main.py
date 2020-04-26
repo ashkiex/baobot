@@ -4,10 +4,12 @@ from datetime import datetime
 import logging
 from hamster import Hamster
 from messageResponse import MessageResponse
+from discord.ext import commands
 
-#client setup
 client = discord.Client()
 # logger = Logger()
+hamster = Hamster(10, 10, 10)
+bot = commands.Bot(command_prefix='b!')
 
 #spawning hamster
 msgr = MessageResponse()
@@ -29,21 +31,17 @@ logger = logging.getLogger()
 #     f.close()
 
 
-@client.event
+@bot.event
 async def on_ready():
-    print('Successfully logged in as {0.user}'.format(client))
-    logger.info('Successfully logged in as {0.user}'.format(client))
-    # FORMAT =
-    # d = {'time': datetime.today().strftime("%H:%M:%S | ")}
-    # logging.basicConfig(filename=today, format=FORMAT)
-    # logger.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
+    print('Successfully logged in as {0.user}'.format(bot))
+    logging.info("'Successfully logged in as {0.user}'.format(client)")
     # f = open(today, 'a')
     # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
     # f.write("\n")
     # f.close()
 
 
-@client.event
+@bot.event
 async def on_member_remove(member):
     for channel in member.guild.channels:
         if channel == member.guild.system_channel:
@@ -53,7 +51,7 @@ async def on_member_remove(member):
     # log(line)
 
 
-@client.event
+@bot.event
 async def on_member_join(member):
     for channel in member.guild.channels:
         if channel == member.guild.system_channel:
@@ -63,14 +61,34 @@ async def on_member_join(member):
     # log(line)
 
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:  # does not reply to bots, including itself
+    await bot.process_commands(message)
+
+    if message.author == bot.user:  # does not reply to bots, including itself
         return
     else:
         await hamster.msgr.getHamsterResponse(message)
 
 
+
+
+
+@bot.command()
+async def squeak(ctx):
+    print("1")
+    # channel = ctx.author.voice.channel
+    # await channel.connect
+    # player = channel.create_ffmpeg_player('squeak.mp3', after=lambda: print('squeaked'))
+    # player.start()
+    # while not player.is_done():
+    #     pass
+    # player.stop()
+    #await ctx.channel.send("squeak")
+    await ctx.send("im chonk boi")
+    # await channel.disconnect()
+
+
 f = open("token.txt", "r")
 token = f.read()
-client.run(token)
+bot.run(token)
