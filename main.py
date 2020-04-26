@@ -3,6 +3,7 @@ from datetime import datetime
 # from logger import Logger
 import logging
 from hamster import Hamster
+# test
 
 client = discord.Client()
 # logger = Logger()
