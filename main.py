@@ -5,7 +5,6 @@ import logging
 from hamster import Hamster
 from discord.ext import commands
 
-client = discord.Client()
 # logger = Logger()
 hamster = Hamster(10, 10, 10)
 bot = commands.Bot(command_prefix='b!')
@@ -25,9 +24,9 @@ logging.basicConfig(
 #     f.close()
 
 
-@client.event
+@bot.event
 async def on_ready():
-    print('Successfully logged in as {0.user}'.format(client))
+    print('Successfully logged in as {0.user}'.format(bot))
     logging.info("'Successfully logged in as {0.user}'.format(client)")
     # f = open(today, 'a')
     # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
@@ -35,7 +34,7 @@ async def on_ready():
     # f.close()
 
 
-@client.event
+@bot.event
 async def on_member_remove(member):
     for channel in member.guild.channels:
         if channel == member.guild.system_channel:
@@ -45,7 +44,7 @@ async def on_member_remove(member):
     # log(line)
 
 
-@client.event
+@bot.event
 async def on_member_join(member):
     for channel in member.guild.channels:
         if channel == member.guild.system_channel:
@@ -55,15 +54,20 @@ async def on_member_join(member):
     # log(line)
 
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:  # does not reply to bots, including itself
+    await bot.process_commands(message)
+
+    if message.author == bot.user:  # does not reply to bots, including itself
         return
     else:
         await hamster.msgResponse(message)
 
 
-@bot.command
+
+
+
+@bot.command()
 async def squeak(ctx):
     print("1")
     # channel = ctx.author.voice.channel
@@ -73,9 +77,11 @@ async def squeak(ctx):
     # while not player.is_done():
     #     pass
     # player.stop()
-    await ctx.channel.send("squeak")
+    #await ctx.channel.send("squeak")
+    await ctx.send("im chonk boi")
     # await channel.disconnect()
+
 
 f = open("token.txt", "r")
 token = f.read()
-client.run(token)
+bot.run(token)
