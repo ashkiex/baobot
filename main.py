@@ -12,30 +12,16 @@ today = "logs/" + datetime.today().strftime('%d-%m-%Y') + ".txt"
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)-19s %(message)s',
+    format='%(asctime)-5s %(message)s',
     filename=today
 )
 logger = logging.getLogger()
-# def log(line):
-#     time = datetime.today().strftime('%H:%M:%S | ')
-#     f = open(today, 'a')
-#     f.write(time + line)
-#     f.write("\n")
-#     f.close()
 
 
 @client.event
 async def on_ready():
     print('Successfully logged in as {0.user}'.format(client))
     logger.info('Successfully logged in as {0.user}'.format(client))
-    # FORMAT =
-    # d = {'time': datetime.today().strftime("%H:%M:%S | ")}
-    # logging.basicConfig(filename=today, format=FORMAT)
-    # logger.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
-    # f = open(today, 'a')
-    # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
-    # f.write("\n")
-    # f.close()
 
 
 @client.event
@@ -44,8 +30,7 @@ async def on_member_remove(member):
         if channel == member.guild.system_channel:
             await channel.send("*squeaks sadly*  someone left the server :'( i hope they come back and bring me sunflower seeds")
     print(str(member) + " left " + str(member.guild))
-    # line = str(member) + " left " + str(member.guild)
-    # log(line)
+    logger.info(str(member) + " left " + str(member.guild))
 
 
 @client.event
@@ -54,8 +39,7 @@ async def on_member_join(member):
         if channel == member.guild.system_channel:
             await channel.send(f"*squeak*  welcome to SADCATZ, {member.mention}! give me mealworms and/or sunflower seeds and i will love you forever :heart: \n\n*call my name and i'll probably squeak at you*")
     print(str(member) + " joined " + str(member.guild))
-    # line = str(member) + " joined " + str(member.guild)
-    # log(line)
+    logger.info(str(member) + " joined " + str(member.guild))
 
 
 @client.event

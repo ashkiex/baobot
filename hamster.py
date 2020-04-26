@@ -1,6 +1,7 @@
 import discord
 import random
 import logging
+from main import logger
 
 
 class Hamster:
@@ -162,8 +163,7 @@ and that's about it! i don't bite (usually) so play with me!
             await message.channel.send(str(rating) + "/10 - " + comment)
 
             print("i rated a pic")
-            # line = "i rated a pic @" + str(message.guild)
-            # log(line)
+            logger.info("i rated a pic @" + str(message.guild))
 
         for i in message.guild.members:
             if i.mentioned_in(message) and not message.mention_everyone:
