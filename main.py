@@ -1,7 +1,7 @@
 import discord
-import random
 from datetime import datetime
 # from logger import Logger
+import logging
 from hamster import Hamster
 
 client = discord.Client()
@@ -10,18 +10,26 @@ hamster = Hamster(10, 10, 10)
 
 today = "logs/" + datetime.today().strftime(('%d-%m-%Y')) + ".txt"
 
-
-def log(line):
-    time = datetime.today().strftime('%H:%M:%S | ')
-    f = open(today, 'a')
-    f.write(time + line)
-    f.write("\n")
-    f.close()
+logging.basicConfig(
+    level = logging.INFO,
+    format= '%(time) %(message)s',
+    filename = today
+)
+# def log(line):
+#     time = datetime.today().strftime('%H:%M:%S | ')
+#     f = open(today, 'a')
+#     f.write(time + line)
+#     f.write("\n")
+#     f.close()
 
 
 @client.event
 async def on_ready():
     print('Successfully logged in as {0.user}'.format(client))
+    FORMAT =
+    d = {'time': datetime.today().strftime("%H:%M:%S | ")}
+    logging.basicConfig(filename=today, format=FORMAT)
+    logging.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
     # f = open(today, 'a')
     # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
     # f.write("\n")
