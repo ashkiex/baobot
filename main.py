@@ -8,13 +8,14 @@ client = discord.Client()
 # logger = Logger()
 hamster = Hamster(10, 10, 10)
 
-today = "logs/" + datetime.today().strftime(('%d-%m-%Y')) + ".txt"
+today = "logs/" + datetime.today().strftime('%d-%m-%Y') + ".txt"
 
 logging.basicConfig(
-    level = logging.INFO,
-    format= '%(time) %(message)s',
-    filename = today
+    level=logging.INFO,
+    format='%(asctime)-19s %(message)s',
+    filename=today
 )
+logger = logging.getLogger()
 # def log(line):
 #     time = datetime.today().strftime('%H:%M:%S | ')
 #     f = open(today, 'a')
@@ -26,10 +27,11 @@ logging.basicConfig(
 @client.event
 async def on_ready():
     print('Successfully logged in as {0.user}'.format(client))
-    FORMAT =
-    d = {'time': datetime.today().strftime("%H:%M:%S | ")}
-    logging.basicConfig(filename=today, format=FORMAT)
-    logging.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
+    logger.info('Successfully logged in as {0.user}'.format(client))
+    # FORMAT =
+    # d = {'time': datetime.today().strftime("%H:%M:%S | ")}
+    # logging.basicConfig(filename=today, format=FORMAT)
+    # logger.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
     # f = open(today, 'a')
     # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
     # f.write("\n")
