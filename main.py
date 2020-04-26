@@ -3,17 +3,19 @@ from datetime import datetime
 # from logger import Logger
 import logging
 from hamster import Hamster
+from discord.ext import commands
 
 client = discord.Client()
 # logger = Logger()
 hamster = Hamster(10, 10, 10)
+bot = commands.Bot(command_prefix='b!')
 
-today = "logs/" + datetime.today().strftime(('%d-%m-%Y')) + ".txt"
+today = "logs/" + datetime.today().strftime('%d-%m-%Y') + ".txt"
 
 logging.basicConfig(
-    level = logging.INFO,
-    format= '%(time) %(message)s',
-    filename = today
+    level=logging.INFO,
+    format='%(asctime)-19s %(message)s',
+    filename=today
 )
 # def log(line):
 #     time = datetime.today().strftime('%H:%M:%S | ')
@@ -26,10 +28,7 @@ logging.basicConfig(
 @client.event
 async def on_ready():
     print('Successfully logged in as {0.user}'.format(client))
-    FORMAT =
-    d = {'time': datetime.today().strftime("%H:%M:%S | ")}
-    logging.basicConfig(filename=today, format=FORMAT)
-    logging.info("'Successfully logged in as {0.user}'.format(client)", extra=d)
+    logging.info("'Successfully logged in as {0.user}'.format(client)")
     # f = open(today, 'a')
     # f.write("Successfully initialised at " + datetime.today().strftime('%H:%M:%S'))
     # f.write("\n")
@@ -63,6 +62,19 @@ async def on_message(message):
     else:
         await hamster.msgResponse(message)
 
+
+@bot.command
+async def squeak(ctx):
+    print("1")
+    # channel = ctx.author.voice.channel
+    # await channel.connect
+    # player = channel.create_ffmpeg_player('squeak.mp3', after=lambda: print('squeaked'))
+    # player.start()
+    # while not player.is_done():
+    #     pass
+    # player.stop()
+    await ctx.channel.send("squeak")
+    # await channel.disconnect()
 
 f = open("token.txt", "r")
 token = f.read()
