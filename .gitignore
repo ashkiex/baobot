@@ -128,6 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /token.txt
+
+# logs
 /logs/
 .idea/bao bot.iml
 .idea/misc.xml
