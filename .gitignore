@@ -129,3 +129,11 @@ dmypy.json
 .pyre/
 /token.txt
 /logs/
+.idea/bao bot.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/dictionaries/georg.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/workspace.xml
+.idea/inspectionProfiles/Project_Default.xml
