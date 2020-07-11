@@ -2,7 +2,7 @@ import discord
 from datetime import datetime
 # from logger import Logger
 import logging
-from hamster import Hamster
+# from hamster import Hamster
 from messageResponse import MessageResponse
 from discord.ext import commands
 
@@ -10,9 +10,9 @@ from discord.ext import commands
 # logger = Logger()
 bot = commands.Bot(command_prefix='b!')
 
-#spawning hamster
+# spawning hamster
 msgr = MessageResponse()
-hamster = Hamster(10, 10, 10, msgr)
+# hamster = Hamster(10, 10, 10, msgr)
 
 today = "logs/" + datetime.today().strftime('%d-%m-%Y') + ".txt"
 
