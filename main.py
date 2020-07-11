@@ -59,7 +59,7 @@ async def on_message(message):
     if message.author == bot.user:  # does not reply to bots, including itself
         return
     else:
-        await hamster.msgr.getHamsterResponse(message)
+        await msgr.getHamsterResponse(message)
 
 
 
